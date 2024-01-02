@@ -1,7 +1,9 @@
-import React from 'react';
+import React from "react";
 
-export default function Header(){
-    return (<div className='p-5 bg-blue-500 text-white text-3xl font-bc'>
-        Fidget Spinner World II
-    </div>);
+export default function Header() {
+  return (
+    <div className="p-5 bg-blue-500 text-white text-3xl font-bc">
+      Fidget Spinner World II Header
+    </div>
+  );
 }
