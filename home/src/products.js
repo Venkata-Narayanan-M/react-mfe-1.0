@@ -4,4 +4,4 @@ export const getProducts = () => fetch(`${API_SERVER}/products`).then((res) => r
 
 export const getProductById = (id) => fetch(`${API_SERVER}/products/${id}`).then((res) => res.json());
 
-export const curreny = new Intl.NumberFormat('en-US', { style: "currency", currency: "USD" });
+export const currency = new Intl.NumberFormat('en-US', { style: "currency", currency: "USD" });

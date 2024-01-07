@@ -4,6 +4,44 @@ import { BehaviorSubject } from "rxjs";
 const API_SERVER = "http://localhost:8080";
 
 export const jwt = new BehaviorSubject(null);
+export const cart = new BehaviorSubject(null);
+
+export const getCart = async () => {
+  const res = await fetch(`${API_SERVER}/cart`, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${jwt.value}`,
+    },
+  });
+  const res_1 = await res.json();
+  cart.next(res_1);
+  return res_1;
+}
+
+export const addToCart = async (id) => {
+  const res = await fetch(`${API_SERVER}/cart`, {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${jwt.value}`,
+    },
+    body: JSON.stringify({ id }),
+  });
+  const res_1 = await res.json();
+  getCart();
+}
+
+export const clearCart = async () => {
+  const res = await fetch(`${API_SERVER}/cart`, {
+    method: 'DELETE',
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${jwt.value}`,
+    },
+  })
+  const res_1 = await res.json();
+  getCart();
+}
 
 export const login = async (username, password) => {
   console.log("Called");
@@ -20,6 +58,7 @@ export const login = async (username, password) => {
     .then((res) => res.json())
     .then((data) => {
       jwt.next(data.access_token);
+      getCart();
       return data.access_token;
     });
 }

@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
-import { getProductById, curreny } from "../../home/src/products";
+import { getProductById, currency } from "home/products";
 
 export default function PDPContent() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
+    console.log("pdp effect");
     if (id) {
       getProductById(id).then(setProduct);
     } else {
@@ -24,7 +25,7 @@ export default function PDPContent() {
         <div className="flex">
           <h1 className="font-bold text-3xl flex-grow">{product.name}</h1>
           <div className="font-bold text-3xl flex-end">
-            {curreny.format(product.price)}
+            {currency.format(product.price)}
           </div>
         </div>
         <div className="mt-10">{product.description}</div>

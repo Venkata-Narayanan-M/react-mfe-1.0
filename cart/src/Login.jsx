@@ -42,6 +42,7 @@ export default function Login() {
             className="bg-green-900 text-white py-2 px-5 rounded-md"
             onClick={() => login(username, password)}
             id="loginbtn"
+            value="Submit"
           />
         </div>
       )}
