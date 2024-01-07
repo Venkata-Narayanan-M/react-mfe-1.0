@@ -12,7 +12,7 @@ export default function CartContent() {
 
   return (
     <>
-      <div className="my-10 grid grid-cols-4 gap-5">
+      <div className="my-10 grid grid-cols-4 gap-5 ">
         {items.map((item) => (
           <React.Fragment key={item.id}>
             <div>{item.quantity}</div>
